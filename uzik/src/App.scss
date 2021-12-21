@@ -1,6 +1,10 @@
 .App {
   height: 100vh;
   background-color: lightblue;
+  &-job {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 
