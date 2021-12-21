@@ -1,1 +1,1 @@
-# uzik_rewriting
+# UZik_rewriting
