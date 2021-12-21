@@ -1,33 +1,28 @@
 // LIBRARY
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // STYLE
 import './App.scss';
 
 // COMPONENTS
 import Header from './components/Header'
-import JobCard from './components/JobCard'
 
-// API
-import { getAllJobsApi } from './shared/api';
+// PAGES
+import Home from './pages/Home';
+
+// ROUTE
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
-  const firstJob: string = '선생님'
-  const secondJob: string = '축구선수'
-  const thirdJob: string = '야구선수'
-
-  useEffect(() => {
-    getAllJobsApi();
-  });
   return (
-    <div className='App'>
-      <Header/>
-      <div className="App-job">
-      <JobCard props={firstJob} />
-      <JobCard props={secondJob} />
-      <JobCard props={thirdJob} />
+    <BrowserRouter>
+      <div className='App'>
+        <Header/>
+          <Routes>
+            <Route path='/' element={<Home />}/>
+          </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
