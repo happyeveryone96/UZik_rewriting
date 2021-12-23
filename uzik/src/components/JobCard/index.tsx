@@ -9,11 +9,11 @@ import Spinner from "../Spinner";
 
 const JobCard = (props: any): React.ReactElement => {
   const jobName: string = props.props ? props.props : '로딩중';
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (jobName !== '로딩중') {
-      setIsLoaded(false);
+      setIsLoaded(true);
     }
   },[jobName])
 

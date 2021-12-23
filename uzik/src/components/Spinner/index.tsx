@@ -11,7 +11,7 @@ const Spinner = (props: any) => {
 
   return (
     <>
-      {visible ? (
+      {!visible ? (
         <div className="spinner">
           <FadeLoader color="rgba(251,216,134,1);" />
         </div>
