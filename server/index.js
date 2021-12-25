@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+require('dotenv').config()
 // const port = 5000
 const config = require('./config/key');
 const bodyParser = require('body-parser');
@@ -99,7 +100,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-var port = 5000;
+var port = process.env.PORT || 8080;
 app.listen(port, function(){
   console.log('server on! http://localhost:'+port);
 });
