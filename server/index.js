@@ -99,7 +99,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-var port = process.env.PORT || 3000;
+var port = 5000;
 app.listen(port, function(){
   console.log('server on! http://localhost:'+port);
 });
