@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 5000
+// const port = 5000
 const config = require('./config/key');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -99,6 +99,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+var port = process.env.PORT || 3000;
+app.listen(port, function(){
+  console.log('server on! http://localhost:'+port);
+});

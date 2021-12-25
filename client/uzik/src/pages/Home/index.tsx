@@ -1,6 +1,9 @@
 // LIBRARY
 import React, { useEffect } from 'react';
 
+// AXIOS
+import axios from 'axios';
+
 // COMPONENTS
 import JobCard from '../../components/JobCard';
 
@@ -28,6 +31,11 @@ const Home = (): React.ReactElement => {
   const firstJob: string = newAllJobs[randomIndexArray[0]];
   const secondJob: string = newAllJobs[randomIndexArray[1]];
   const thirdJob: string = newAllJobs[randomIndexArray[2]];
+
+  useEffect(() => {
+    axios.get('/api/hello')
+    .then(res => console.log(res.data));
+  }, [])
 
   useEffect(() => {
     dispatch(getAllJobsApi());
