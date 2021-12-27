@@ -12,9 +12,11 @@
     "@types/react-dom": "^17.0.11",
     "@types/yargs": "^17.0.8",
     "axios": "^0.24.0",
+    "buffer": "^6.0.3",
     "connected-react-router": "^6.9.2",
     "history": "^5.2.0",
     "http-proxy-middleware": "^2.0.1",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -24,6 +26,7 @@
     "react-spinners": "^0.11.0",
     "redux-logger": "^3.0.6",
     "sass": "^1.45.1",
+    "serialize-javascript": "^6.0.0",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.2"
   },
@@ -54,6 +57,7 @@
   "devDependencies": {
     "@types/node": "^16.11.17",
     "@types/redux-logger": "^3.0.9",
+    "@types/serialize-javascript": "^5.0.2",
     "@types/xml2js": "^0.4.9",
     "node-sass": "^7.0.0",
     "sass-loader": "^12.4.0"

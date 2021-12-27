@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import job from './modules/JobModule/job';
 import { connectRouter } from 'connected-react-router';
+import user from './modules/UserModule/user';
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   job: job.reducer,
+  // user: user.reducer,
   router: connectRouter(history),
 });
 

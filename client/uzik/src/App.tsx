@@ -12,7 +12,6 @@ import Home from './pages/Home';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
 
-
 // ROUTE
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
