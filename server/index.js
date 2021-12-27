@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 require('dotenv').config()
 // const port = 5000
 const config = require('./config/key');
@@ -7,6 +8,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { auth } = require('./middleware/auth');
 const { User } = require('./models/User');
+
+app.user(cors());
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
@@ -22,14 +25,17 @@ mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connected...')
   .catch(err => console.log(err))
 
 app.get('/', (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   res.send('Hello!')
 })
 
 app.get('/api/hello', (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   res.send("안녕하세요~");
 })
 
 app.post('api/user/register', (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   const user = new User(req.body);
   user.save((err, userInfo) => {
     if (err) return res.json({
@@ -43,6 +49,7 @@ app.post('api/user/register', (req, res) => {
 })
 
 app.post('api/user/login', (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   // 요청된 이메일을 데이터베이스에서 있는지 찾는다.
   User.findOne({
     email: req.body.email
@@ -76,6 +83,7 @@ app.post('api/user/login', (req, res) => {
 })
 
 app.get('/api/user/auth', auth, (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   // 여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True라는 말
   res.status(200).json({
     _id: req.user._id,
@@ -89,7 +97,8 @@ app.get('/api/user/auth', auth, (req, res) => {
   })
 })
 
-app.get('/api/users/logout', auth, (req, res) => {
+app.get('/api/user/logout', auth, (req, res) => {
+  res.header('Access-Control-Allow-Origin', "*");
   User.findOneAndUpdate({ _id: req.user._id }, 
     { token: '' }
     , (err, user) => {
