@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const { auth } = require('./middleware/auth');
 const { User } = require('./models/User');
 
-app.user(cors());
+app.use(cors());
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
