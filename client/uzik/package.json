@@ -2,12 +2,12 @@
   "name": "uzik",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://openapi.work.go.kr/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "antd": "^4.17.4",
     "axios": "^0.24.0",
     "buffer": "^6.0.3",
     "connected-react-router": "^6.9.2",
