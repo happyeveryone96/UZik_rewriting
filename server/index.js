@@ -34,7 +34,7 @@ app.get('/api/hello', (req, res) => {
   res.send("안녕하세요~");
 })
 
-app.post('api/user/register', (req, res) => {
+app.post('/api/user/register', (req, res) => {
   res.header('Access-Control-Allow-Origin', "*");
   const user = new User(req.body);
   user.save((err, userInfo) => {
@@ -48,7 +48,7 @@ app.post('api/user/register', (req, res) => {
   })
 })
 
-app.post('api/user/login', (req, res) => {
+app.post('/api/user/login', (req, res) => {
   res.header('Access-Control-Allow-Origin', "*");
   // 요청된 이메일을 데이터베이스에서 있는지 찾는다.
   User.findOne({
@@ -98,7 +98,6 @@ app.get('/api/user/auth', auth, (req, res) => {
 })
 
 app.get('/api/user/logout', auth, (req, res) => {
-  res.header('Access-Control-Allow-Origin', "*");
   User.findOneAndUpdate({ _id: req.user._id }, 
     { token: '' }
     , (err, user) => {
