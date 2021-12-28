@@ -1,37 +1,36 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { SignInDB } from '../../redux/modules/UserModule/user';
-// import { loginUser } from '../../../_actions/user_action';
+import { loginUser } from '../../../_actions/user_action';
 
-function LoginPage(): React.ReactElement {
+function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
-  const onEmailHanlder = (event:any) => {
+  const onEmailHanlder = (event) => {
     setEmail(event.target.value);
   }
-  const onPasswordHandler = (event:any) => {
+  const onPasswordHandler = (event) => {
     setPassword(event.target.value);
   }
-  const onSubmitHandler = (event:any) => {
+  const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    let userInfo = {
+    let body = {
       email: Email,
       password: Password
     }
-    dispatch(SignInDB(userInfo))
-    // dispatch(loginUser(body))
-    // .then(response => {
-    //   if (response.payload.loginSuccess) {
-    //     navigate('/')
-    //   } else {
-    //     alert('Error');
-    //   }
-    // })
+
+    dispatch(loginUser(body))
+    .then(response => {
+      if (response.payload.loginSuccess) {
+        navigate('/')
+      } else {
+        alert('Error');
+      }
+    })
   }
 
   return (

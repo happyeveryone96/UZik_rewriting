@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { signUpDB } from '../../redux/modules/UserModule/user';
+import { registerUser } from '../../../_actions/user_action';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -11,19 +11,19 @@ function RegisterPage() {
   const [Name, setName] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
 
-  const onEmailHanlder = (event:any) => {
+  const onEmailHanlder = (event) => {
     setEmail(event.target.value);
   }
-  const onNameHandler = (event:any) => {
+  const onNameHandler = (event) => {
     setName(event.target.value);
   }
-  const onPasswordHandler = (event:any) => {
+  const onPasswordHandler = (event) => {
     setPassword(event.target.value);
   }
-  const onConfirmPasswordHandler = (event:any) => {
+  const onConfirmPasswordHandler = (event) => {
     setConfirmPassword(event.target.value);
   }
-  const onSubmitHandler = (event:any) => {
+  const onSubmitHandler = (event) => {
     event.preventDefault();
 
     if (Password !== ConfirmPassword) {
@@ -34,15 +34,15 @@ function RegisterPage() {
       password: Password,
       name: Name
     }
-    dispatch(signUpDB(body))
-    // dispatch(registerUser(body))
-    // .then(response => {
-    //   if (response.payload.success) {
-    //     navigate('/login');
-    //   } else {
-    //     alert('Failed to sign up');
-    //   }
-    // })
+
+    dispatch(registerUser(body))
+    .then(response => {
+      if (response.payload.success) {
+        navigate('/login');
+      } else {
+        alert('Failed to sign up');
+      }
+    })
   }
 
   return (
