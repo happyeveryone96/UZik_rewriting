@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../../_actions/user_action';
+import { loginUser } from '../_actions/user_action';
+import Button from '../elements/Button';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -48,9 +49,18 @@ function LoginPage() {
             <label>Password</label>
             <input type="password" value={Password} onChange={onPasswordHandler} autoComplete="on"/>
             <br/>
-            <button>로그인</button>
+            <Button 
+              fontSize={'20px'} 
+              background={'#718093'} 
+              color={'white'}>로그인
+            </Button>
             <br/>
-            <button onClick={()=>navigate('/register')}>회원가입</button>
+            <Button 
+              fontSize={'20px'} 
+              background={'#718093'} 
+              color={'white'}
+              clickEvent={()=>navigate('/register')}>회원가입
+            </Button>
           </form>
     </div>
   )
