@@ -8,7 +8,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // ELEMENTS
-import Button from '../../elements/Button'
+import Button from '../../elements/Button';
+
+import { delToken } from '../../shared/token'
 
 // STYLE
 import './index.scss'
@@ -20,7 +22,9 @@ const Header = () => {
     axios.get('/api/user/logout')
     .then(response => {
       if (response.data.success) {
-        navigate('/login');
+        console.log(response.data.success)
+        // delToken();
+        // navigate('/login');
       } else {
         alert('로그아웃 하는데 실패했습니다.')
       }

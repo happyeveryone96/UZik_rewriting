@@ -8,16 +8,14 @@ import 'antd/dist/antd.css';
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import Reducer from './_reducers/index';
+// import Reducer from './_reducers/index';
+import { ConnectedRouter } from "connected-react-router";
+import store, { history } from "./redux/configureStore";
 
 const createStoreWithMiddleWare = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
-  <Provider 
-    store={createStoreWithMiddleWare(Reducer, 
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-    )}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')

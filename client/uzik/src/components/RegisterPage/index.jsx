@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../../_actions/user_action';
+import { registerUser } from '../../redux/modules/user';
 import Button from '../../elements/Button';
 import Input from '../../elements/Input';
 
@@ -67,9 +67,9 @@ function RegisterPage() {
             <Input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler} />
             <br/>
             <Button 
-              fontSize={'20px'} 
-              background={'#718093'} 
-              color={'white'}
+              fontSize='20px'
+              background='#f5f6fa'
+              color={'black'}
               clickEvent={()=>navigate('/register')}>회원가입
             </Button>
           </form>

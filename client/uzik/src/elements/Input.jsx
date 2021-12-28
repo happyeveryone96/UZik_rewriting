@@ -34,7 +34,7 @@ const InputStyle = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   color: ${(props) => props.color};
-  background: ${(props) => props.bgColor};
+  background: white;
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin};
   border: 1px solid #718093;
