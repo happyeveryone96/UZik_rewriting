@@ -20,7 +20,9 @@ Button.defaultProps = {
 };
 
 const ButtonStyle = styled.button`
+  min-width: 40px;
   width: ${(props) => props.width};
+  height: ${(props) => props.height};
   background: ${(props) => props.background};
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
