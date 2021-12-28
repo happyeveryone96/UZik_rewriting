@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../_actions/user_action';
 import Button from '../elements/Button';
+import Input from '../elements/Input';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -45,9 +46,9 @@ function LoginPage() {
           <form style={{ display: 'flex', flexDirection: 'column' }}
             onSubmit={onSubmitHandler}>
             <label>Email</label>
-            <input type="email" value={Email} onChange={onEmailHanlder} />
+            <Input type={'email'} value={Email} onChange={onEmailHanlder}/>
             <label>Password</label>
-            <input type="password" value={Password} onChange={onPasswordHandler} autoComplete="on"/>
+            <Input type="password" value={Password} onChange={onPasswordHandler} autoComplete="on"/>
             <br/>
             <Button 
               fontSize={'20px'} 

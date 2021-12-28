@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../_actions/user_action';
 import Button from '../elements/Button';
+import Input from '../elements/Input';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -57,13 +58,13 @@ function RegisterPage() {
           <form style={{ display: 'flex', flexDirection: 'column' }}
             onSubmit={onSubmitHandler}>
             <label>Email</label>
-            <input type="email" value={Email} onChange={onEmailHanlder} />
+            <Input type="email" value={Email} onChange={onEmailHanlder} />
             <label>Name</label>
-            <input type="text" value={Name} onChange={onNameHandler} />
+            <Input type="text" value={Name} onChange={onNameHandler} />
             <label>Password</label>
-            <input type="password" value={Password} onChange={onPasswordHandler} />
+            <Input type="password" value={Password} onChange={onPasswordHandler} />
             <label>Confirm Password</label>
-            <input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler} />
+            <Input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler} />
             <br/>
             <Button 
               fontSize={'20px'} 
