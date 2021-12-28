@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React from "react";
 import {
   BrowserRouter,
@@ -6,9 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 
-import LandingPage from './components/LandingPage/LandingPage';
-import LoginPage from './components/LoginPage/LoginPage';
-import RegisterPage from './components/RegisterPage/RegisterPage';
+import LandingPage from './components/LandingPage';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 import Auth from './hoc/auth';
 
 
