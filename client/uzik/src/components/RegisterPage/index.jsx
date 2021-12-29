@@ -30,7 +30,7 @@ function RegisterPage() {
     event.preventDefault();
 
     if (Password !== ConfirmPassword) {
-      return alert('비밀번호와 비밀번화 확인은 같아야 합니다.')
+      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
     }
     let body = {
       email: Email,
