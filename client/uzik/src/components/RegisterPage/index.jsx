@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../redux/modules/user';
 import Button from '../../elements/Button';
 import Input from '../../elements/Input';
 
+// REDUX
+import { history } from '../../redux/configureStore';
+
 function RegisterPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
@@ -38,13 +39,6 @@ function RegisterPage() {
     }
 
     dispatch(registerUser(body))
-    .then(response => {
-      if (response.payload.success) {
-        navigate('/login');
-      } else {
-        alert('Failed to sign up');
-      }
-    })
   }
 
   return (
@@ -70,7 +64,14 @@ function RegisterPage() {
               fontSize='20px'
               background='#f5f6fa'
               color={'black'}
-              clickEvent={()=>navigate('/register')}>회원가입
+              clickEvent={()=>history.push('/register')}>회원가입
+            </Button>
+            <br/>
+            <Button 
+              fontSize='20px'
+              background='#f5f6fa'
+              color={'black'}
+              clickEvent={()=>history.push('/login')}>뒤로 가기
             </Button>
           </form>
     </div>

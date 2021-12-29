@@ -1,5 +1,9 @@
 import React, { useEffect }from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+
+// REDUX
+import { history } from '../redux/configureStore';
+import { auth } from '../redux/modules/user';
 
 export default function (SpecificComponent, option, adminRoute = null) {
   // option
@@ -7,17 +11,21 @@ export default function (SpecificComponent, option, adminRoute = null) {
   // true -> 로그인한 유저만 출입이 가능한 페이지
   // false -> 로그인한 유저는 출입 불가능한 페이지
   function AuthenticationCheck() {
-    const navigate = useNavigate();
-    // useEffect(() => {
-    // if (document.cookie === '' && option) {
-    //   navigate('/login');
-    // }
-    // }, [])
+    const token = document.cookie.split('x_auth=')[1];
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(auth())
+      if (option && token !== undefined) {
+        history.push('/');
+      } else if (option && token === undefined) {
+        history.push('/login');
+      } else if (!option && token !== undefined) {
+        history.push('/');
+      }
+    },[option])
     return (
       <SpecificComponent/>
     )
   }
-  return (
-    <AuthenticationCheck/>
-  )
+  return AuthenticationCheck;
 }

@@ -35,11 +35,6 @@ function LandingPage() {
     dispatch(getAllJobsApi());
   },[dispatch]);
 
-  useEffect(() => {
-    axios.get('/api/hello')
-    .then(res => console.log(res.data));
-  }, [])
-
   return (
     <div>
       <Header/>

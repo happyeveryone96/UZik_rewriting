@@ -1,10 +1,8 @@
 import './App.scss';
 import React from "react";
 import {
-  BrowserRouter,
-  Routes,
   Route,
-  Router,
+  Switch,
 } from "react-router-dom";
 
 import LandingPage from './components/LandingPage';
@@ -12,17 +10,15 @@ import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import Auth from './hoc/auth';
 
-function App() {
+const App = () =>{
   return (
-    <BrowserRouter>
     <div className='App'>
-        <Routes>
-          <Route exact path="/" element={Auth(LandingPage, true)}/>
-          <Route exact path="/login" element={Auth(LoginPage, false)}/>
-          <Route exact path="/register" element={Auth(RegisterPage, false)}/>
-        </Routes>
+      <Switch>
+        <Route exact path="/" component={Auth(LandingPage, true)}/>
+        <Route exact path="/login" component={Auth(LoginPage, false)}/>
+        <Route exact path="/register" component={Auth(RegisterPage, false)}/>
+      </Switch>
     </div>
-    </BrowserRouter>
   );
 }
 

@@ -4,13 +4,13 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import job from './modules/job';
 import { connectRouter } from 'connected-react-router';
-import userSlice from './modules/user';
+import user from './modules/user';
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
-  user: userSlice,
+  user: user.reducer,
   job: job.reducer,
 });
 

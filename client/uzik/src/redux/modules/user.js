@@ -1,16 +1,14 @@
 // import jwtDecode from 'jwt-decode';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { setToken, delToken } from '../../shared/token';
-// import { setUserInfo } from '../../shared/userInfo';
-// import { history } from '../configureStore';
+import { delToken } from '../../shared/token';
 
 const initialState = {
   user_info: { email: '' },
   is_login: false,
 };
 
-const userSlice = createSlice({
+const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -23,30 +21,42 @@ const userSlice = createSlice({
     },
     SetUser: (state, action) => {
       state.user_info.email = action.payload;
-      setToken(action.payload.token);
       state.is_login = true;
     },
   },
 });
 
-export const loginUser = (dataTosubmit) => 
+export const loginUser = (body) => 
   async (dispatch, getState, { history }) => {
-  const request = axios.post('/api/user/login', dataTosubmit)
-    .then(response => response.data.loginSuccess)
-    .then(history.push('/'));
+  const request = axios.post('/api/user/login', body)
+    .then(response => {
+      if (response.data.loginSuccess === true) {
+        history.push('/')
+      } else {
+        alert('Error');
+      }})
 }
 
-export const registerUser = (dataTosubmit) => 
+export const registerUser = (body) => 
   async (dispatch, getState, { history }) => {
-  const request = axios.post('/api/user/register', dataTosubmit)
-    .then(response => console.log(response))
+  const request = axios.post('/api/user/register', body)
+    .then(response => {
+      if (response.data.success === true) {
+        history.push('/login')
+      } else {
+        alert('중복된 이메일입니다.')
+      }})
+  return { payload: request }
 }
 
 export const auth = () => 
   async (dispatch, getState, { history }) => {
-  const request = axios.get('/api/user/auth')
-    .then(response => response.data)
+    const request = axios.get('/api/user/auth')
+      .then(response => {
+        const email = response.data.email;
+        dispatch(SetUser(email))
+      })
 }
 
-export const { SetUser, logOut, logCheck } = userSlice.actions;
-export default userSlice;
+export const { SetUser, logOut, logCheck } = user.actions;
+export default user;
