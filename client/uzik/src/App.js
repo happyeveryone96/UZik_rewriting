@@ -5,9 +5,9 @@ import {
   Switch,
 } from "react-router-dom";
 
-import LandingPage from './components/LandingPage';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import Auth from './hoc/auth';
 
 const App = () =>{
