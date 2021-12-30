@@ -58,6 +58,15 @@ function LandingPage() {
       <JobPost/>
       <JobPost/>
       <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
     </div>
   )
 }

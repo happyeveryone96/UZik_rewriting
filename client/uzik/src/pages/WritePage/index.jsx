@@ -87,12 +87,16 @@ function WritePage() {
       />
       <div className='write-page-button'>
         <Button 
-          width='48%' 
+          width='48%'
+          background='#718093'
+          color='white' 
           borderRadius="10px">
           작성하기
         </Button>
         <Button
-          width='48%' 
+          width='48%'
+          background='#718093'
+          color='white'
           borderRadius="10px"
           clickEvent={() => history.push('/')}>
           취소하기

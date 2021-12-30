@@ -34,6 +34,7 @@ function LoginPage() {
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center',
+        background:'#718093',
         width: '100%',
         height: '100vh'}}>
           <form style={{ display: 'flex', flexDirection: 'column' }}
