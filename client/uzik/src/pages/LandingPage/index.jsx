@@ -1,11 +1,9 @@
 // LIBRARY
 import React, { useEffect } from 'react';
 
-// AXIOS
-import axios from 'axios';
-
 // COMPONENTS
 import JobCard from '../../components/JobCard';
+import JobPost from '../../components/JobPost';
 import Header from '../../components/Header';
 
 // REDUX
@@ -43,6 +41,9 @@ function LandingPage() {
         <JobCard props={secondJob} />
         <JobCard props={thirdJob} />
       </div>
+      <JobPost/>
+      <JobPost/>
+      <JobPost/>
     </div>
   )
 }

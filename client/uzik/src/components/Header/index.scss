@@ -1,9 +1,13 @@
 .header {
+  width: 300px;
+  margin: auto;
   display: flex;
+  justify-content: center;
 }
 
 .name {
   display: flex;
+  min-width: 200px;
   align-items: center;
   justify-content: center;
   color: white;

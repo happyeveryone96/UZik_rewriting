@@ -1,0 +1,38 @@
+.job-post {
+  background-color: #f5f6fa;
+  margin: 10px auto;
+  width: 90vw;
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  &-name {
+    display: flex;
+    min-width: 150px;
+    width: 15vw;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 100%;
+    border-right: 1px solid lightgray;
+  }
+  &-title {
+    display: flex;
+    width: 15vw;
+    min-width: 150px;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 100%;
+    border-right: 1px solid lightgray;
+  }
+  &-content {
+    display: flex;
+    width: 60vw;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 100%;
+  }
+}

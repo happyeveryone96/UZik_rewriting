@@ -13,6 +13,7 @@ import Button from '../../elements/Button';
 import { delToken } from '../../shared/token';
 
 // STYLE
+import { css } from "styled-components";
 import './index.scss'
 
 const Header = () => {
@@ -39,6 +40,12 @@ const Header = () => {
       color='black'
       borderRadius='10px'
       clickEvent={()=>history.push(0)}
+      addstyle={() => {
+        return css`
+          position: relative;
+          left: 100px;
+        `;
+      }}
       >
     새로고침
     </Button>
@@ -52,6 +59,12 @@ const Header = () => {
       color='black'
       borderRadius='10px'
       clickEvent={onClickHandler}
+      addstyle={() => {
+        return css`
+          position: relative;
+          right: 100px;
+        `;
+      }}
       >
     로그아웃
     </Button>
