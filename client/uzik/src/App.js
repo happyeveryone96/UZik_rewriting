@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Auth from './hoc/auth';
 import WritePage from './pages/WritePage';
+import PostDetailPage from './pages/PostDetailPage';
 
 const App = () =>{
   return (
@@ -19,6 +20,7 @@ const App = () =>{
         <Route exact path="/login" component={Auth(LoginPage, false)}/>
         <Route exact path="/register" component={Auth(RegisterPage, false)}/>
         <Route exact path="/write" component={WritePage}/>
+        <Route exact path="/detail/:id" component={PostDetailPage}/>
       </Switch>
     </div>
   );

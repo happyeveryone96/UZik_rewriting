@@ -11,6 +11,7 @@ import './index.scss';
 
 // REDUX
 import { history } from "../../redux/configureStore";
+import Header from '../../components/Header';
 
 function WritePage() {
   const [job, setJob] = React.useState("");
@@ -29,6 +30,7 @@ function WritePage() {
 
   return (
     <div className='write-page'>
+      <Header/>
       <div className='write-page-title'>
        커뮤니티 글 등록
       </div>
@@ -89,7 +91,7 @@ function WritePage() {
           borderRadius="10px">
           작성하기
         </Button>
-        <Button 
+        <Button
           width='48%' 
           borderRadius="10px"
           clickEvent={() => history.push('/')}>

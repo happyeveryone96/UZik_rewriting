@@ -1,0 +1,40 @@
+.post {
+  background-color: #f5f6fa;
+  margin: auto;
+  position: relative;
+  top: 30px;
+  width: 80vw;
+  max-width: 800px;
+  min-height: 400px;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  &-name {
+    height: 5vh;
+    margin: 10px 0;
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #718093;
+  }
+  &-job {
+    height: 5vh;
+    margin: 10px 0;
+    width: 100%;
+    border-bottom: 2px solid #718093;
+  }
+  &-title {
+    height: 5vh;
+    width: 100%;
+    margin: 10px 0;
+    border-bottom: 2px solid #718093;
+  }
+  &-content {
+    margin: 10px 0;
+    height: 35vh;
+  }
+  &-text {
+    margin: 0 20px;
+  }
+}

@@ -1,6 +1,8 @@
 .job-post {
   background-color: #f5f6fa;
+  cursor: pointer;
   margin: 10px auto;
+  color: black;
   width: 90vw;
   height: 50px;
   display: flex;
@@ -13,7 +15,6 @@
     width: 15vw;
     justify-content: center;
     align-items: center;
-    color: red;
     height: 100%;
     border-right: 1px solid lightgray;
   }
@@ -23,16 +24,15 @@
     min-width: 150px;
     justify-content: center;
     align-items: center;
-    color: red;
     height: 100%;
     border-right: 1px solid lightgray;
   }
   &-content {
     display: flex;
     width: 60vw;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    color: red;
+    margin: 10px;
     height: 100%;
   }
 }

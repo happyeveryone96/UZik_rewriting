@@ -45,10 +45,11 @@ function LandingPage() {
         <JobCard props={secondJob} />
         <JobCard props={thirdJob} />
       </div>
-      <Button 
+      <Button
+        color='white'
         width='100px' 
         height='30px' 
-        background='white'
+        background='#718093'
         margin='10px 80px'
         borderRadius='10px'
         clickEvent={() => history.push('/write')}>

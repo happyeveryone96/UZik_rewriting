@@ -2,11 +2,14 @@
 import React, { useState, useEffect } from 'react';
 
 // STYLE
-import './index.scss'
+import './index.scss';
+
+// REDUX
+import { history } from "../../redux/configureStore";
 
 const JobPost = () => {
   return (
-      <div className="job-post">
+      <div className="job-post" onClick={()=>history.push('/detail/1')}>
         <div className="job-post-name">
           직업명
         </div>

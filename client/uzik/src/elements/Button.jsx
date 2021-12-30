@@ -20,7 +20,7 @@ Button.defaultProps = {
 };
 
 const ButtonStyle = styled.button`
-  min-width: 40px;
+  min-width: 70px;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background: ${(props) => props.background};
