@@ -6,9 +6,13 @@ import JobCard from '../../components/JobCard';
 import JobPost from '../../components/JobPost';
 import Header from '../../components/Header';
 
+// ELEMENTS
+import { Button } from '../../elements/index';
+
 // REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllJobsApi } from '../../redux/modules/job'
+import { history } from "../../redux/configureStore";
 
 function LandingPage() {
   const dispatch = useDispatch()
@@ -41,6 +45,15 @@ function LandingPage() {
         <JobCard props={secondJob} />
         <JobCard props={thirdJob} />
       </div>
+      <Button 
+        width='100px' 
+        height='30px' 
+        background='white'
+        margin='10px 80px'
+        borderRadius='10px'
+        clickEvent={() => history.push('/write')}>
+        글쓰기
+      </Button>
       <JobPost/>
       <JobPost/>
       <JobPost/>

@@ -1,0 +1,15 @@
+.write-page {
+  position: relative;
+  top: 30px;
+  &-title {
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  &-button {
+    margin: auto;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
