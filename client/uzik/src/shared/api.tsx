@@ -12,7 +12,7 @@ import { history } from '../redux/configureStore';
 import axios from 'axios';
 
 // token / jwt
-import { getToken, delToken, setToken } from './token';
+import { getToken, setToken, delToken } from './token';
 import jwtDecode from 'jwt-decode';
 export const instance = axios.create({
   baseURL: 'http://13.125.2.115:8080/',
@@ -21,10 +21,10 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  config.headers['Content-Type'] = 'application/json; charset=utf-8';
-  config.headers['X-Requested-With'] = 'XMLHttpRequest';
-  config.headers.token = getToken();
-  config.headers.Accept = 'application/json';
+  config.headers!['Content-Type'] = 'application/json; charset=utf-8';
+  config.headers!['X-Requested-With'] = 'XMLHttpRequest';
+  config.headers!.token = getToken();
+  config.headers!.Accept = 'application/json';
   return config;
 });
 
@@ -53,8 +53,8 @@ instance.interceptors.response.use(
 );
 
 const apis = {
-  SignUp: (user) => instance.post('/api/user/register', user),
-  SignIn: (user) => instance.post('/api/user/login', user),
+  SignUp: (user: SignUpType) => instance.post('/api/user/register', user),
+  SignIn: (user: SignInType) => instance.post('/api/user/login', user),
   LogOut: () => instance.get('/api/user/logout'),
   Auth: () => instance.get('/api/user/auth'),
 }

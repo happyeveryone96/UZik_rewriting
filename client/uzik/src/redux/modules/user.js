@@ -1,7 +1,7 @@
 // import jwtDecode from 'jwt-decode';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { delToken } from '../../shared/token';
+import { delToken } from '../../shared/token.tsx';
 
 const initialState = {
   user_info: { email: '' },
