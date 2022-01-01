@@ -1,11 +1,11 @@
 
-// Api Types
+// API TYPES
 import { SignInType, SignUpType } from './ApiTypes';
 
-// axios
+// AXIOS
 import axios from 'axios';
 
-// token / jwt
+// TOKEN / JWT
 import { getToken } from './token';
 
 export const instance = axios.create({

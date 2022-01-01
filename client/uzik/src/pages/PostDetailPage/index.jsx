@@ -1,14 +1,11 @@
 // LIBRARY
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // COMPOENTS
 import Header from '../../components/Header'
 
 // STYLE
 import './index.scss';
-
-// REDUX
-import { history } from "../../redux/configureStore";
 
 const PostDetailPage = () => {
   return (

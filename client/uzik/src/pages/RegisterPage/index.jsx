@@ -1,11 +1,14 @@
+// LIBRARY
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../redux/modules/user.ts';
+
+// ELEMENTS
 import Button from '../../elements/Button';
 import Input from '../../elements/Input';
 
 // REDUX
 import { history } from '../../redux/configureStore';
+import { registerUser } from '../../redux/modules/user.ts';
 
 function RegisterPage() {
   const dispatch = useDispatch();
