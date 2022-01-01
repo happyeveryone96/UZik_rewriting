@@ -49,9 +49,15 @@ function LandingPage() {
     <div>
       <Header/>
       <div className="App-job">
+        <div className="App-job-first">
         <JobCard props={firstJob} />
+        </div>
+        <div className="App-job-second">
         <JobCard props={secondJob} />
+        </div>
+        <div className="App-job-third">
         <JobCard props={thirdJob} />
+        </div>
       </div>
       <Button
         color='white'

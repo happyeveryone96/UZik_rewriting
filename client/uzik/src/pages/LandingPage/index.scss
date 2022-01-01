@@ -3,6 +3,7 @@
   margin: 10px auto;
   width: 90vw;
   color: gray;
+  min-width: 450px;
   &-job {
     display: flex;
     justify-content: center;
@@ -22,5 +23,19 @@
     justify-content: center;
     align-items: center;
     width: 60vw;
+  }
+}
+
+.App-job {
+  min-width: 400px;
+  &-first {
+    @media screen and (max-width: 920px) {
+      display: none;
+    }
+  }
+  &-second {
+    @media screen and (max-width: 640px) {
+      display: none;
+    }
   }
 }
