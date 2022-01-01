@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 // REDUX
 import { history } from '../redux/configureStore';
-import { auth } from '../redux/modules/user';
+import { auth } from '../redux/modules/user.ts';
 
 export default function (SpecificComponent, option, adminRoute = null) {
   // option

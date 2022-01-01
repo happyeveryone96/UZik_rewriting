@@ -3,7 +3,7 @@
 import { SignInType, SignUpType } from './ApiTypes';
 
 // Info
-import { setUserInfo, delUserInfo } from './userInfo';
+import { setUserInfo } from './userInfo';
 
 // redux
 import { history } from '../redux/configureStore';
@@ -12,10 +12,11 @@ import { history } from '../redux/configureStore';
 import axios from 'axios';
 
 // token / jwt
-import { getToken, setToken, delToken } from './token';
+import { getToken, delToken } from './token';
 import jwtDecode from 'jwt-decode';
 export const instance = axios.create({
-  baseURL: 'http://13.125.2.115:8080/',
+  // baseURL: 'http://13.125.2.115:8080/',
+  baseURL: 'http://localhost:8080/',
   withCredentials: true,
   timeout: 3000,
 });
@@ -36,7 +37,6 @@ instance.interceptors.response.use(
     const path = window.location.pathname;
 
     if (err.response.status === 307) {
-      setToken(err.response.data.newAccessToken);
       setUserInfo('userInfo', jwtDecode(getToken()));
       history.go(0);
     } else if (
@@ -45,7 +45,6 @@ instance.interceptors.response.use(
     ) {
       window.alert('토큰이 만료되었어요! 다시 로그인해주세요!');
       delToken();
-      delUserInfo('userInfo');
       history.push('/');
     }
     return Promise.reject(err);

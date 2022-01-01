@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/modules/user';
+import { loginUser } from '../../redux/modules/user.ts';
 import Button from '../../elements/Button';
 import Input from '../../elements/Input';
 

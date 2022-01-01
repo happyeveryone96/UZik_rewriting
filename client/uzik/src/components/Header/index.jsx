@@ -11,7 +11,7 @@ import { history } from '../../redux/configureStore';
 import Button from '../../elements/Button';
 
 // TOKEN
-import { delToken } from '../../shared/token.tsx';
+import { delToken } from '../../shared/token.ts';
 
 // ROUTE
 import { useLocation } from "react-router-dom";

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import job from './modules/job';
 import { connectRouter } from 'connected-react-router';
-import user from './modules/user';
+import user from './modules/user.ts';
 
 export const history = createBrowserHistory();
 

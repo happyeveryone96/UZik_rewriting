@@ -34,6 +34,8 @@ app.get('/api/hello', (req, res) => {
   res.send("안녕하세요~");
 })
 
+app.use('/api/post', require('./routes/post'));
+
 app.post('/api/user/register', (req, res) => {
   res.header('Access-Control-Allow-Origin', "*");
   const user = new User(req.body);

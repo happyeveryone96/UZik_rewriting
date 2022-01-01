@@ -1,10 +1,10 @@
-// import jwtDecode from 'jwt-decode';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { delToken } from '../../shared/token.tsx';
+import { delToken } from '../../shared/token.ts';
+import { SignUpType, SignInType } from '../../shared/ApiTypes';
 
 const initialState = {
-  user_info: { email: '' },
+  user_info: { email: '', id: ''},
   is_login: false,
 };
 
@@ -20,14 +20,15 @@ const user = createSlice({
       state.is_login = false;
     },
     SetUser: (state, action) => {
-      state.user_info.email = action.payload;
+      state.user_info.email = action.payload.email;
+      state.user_info.id = action.payload.id;
       state.is_login = true;
     },
   },
 });
 
-export const loginUser = (body) => 
-  async (dispatch, getState, { history }) => {
+export const loginUser = (body: SignInType) => 
+  async (dispatch:any, getState:any, { history }) => {
   const request = axios.post('/api/user/login', body)
     .then(response => {
       if (response.data.loginSuccess === true) {
@@ -37,8 +38,8 @@ export const loginUser = (body) =>
       }})
 }
 
-export const registerUser = (body) => 
-  async (dispatch, getState, { history }) => {
+export const registerUser = (body: SignUpType) => 
+  async (dispatch:any, getState:any, { history }) => {
   const request = axios.post('/api/user/register', body)
     .then(response => {
       if (response.data.success === true) {
@@ -50,11 +51,14 @@ export const registerUser = (body) =>
 }
 
 export const auth = () => 
-  async (dispatch, getState, { history }) => {
+  async (dispatch:any, { history }) => {
     const request = axios.get('/api/user/auth')
       .then(response => {
         const email = response.data.email;
-        dispatch(SetUser(email))
+        const name = response.data.name;
+        const id = response.data._id;
+        const userInfo = { email, name, id }
+        dispatch(SetUser(userInfo));
       })
 }
 

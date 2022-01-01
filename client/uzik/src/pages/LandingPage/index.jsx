@@ -34,6 +34,7 @@ function LandingPage() {
   const thirdJob = newAllJobs[randomIndexArray[2]];
 
   useEffect(() => {
+    console.log(document.cookie);
     dispatch(getAllJobsApi());
   },[dispatch]);
 

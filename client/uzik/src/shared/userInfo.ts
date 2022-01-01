@@ -1,18 +1,12 @@
 
-import serialize from 'serialize-javascript';
-
-interface UserInfo {
-  name: string;
-}
-
-const setUserInfo = (key: string, userInfo: UserInfo) => {
-  localStorage.setItem(key, serialize(userInfo, { isJSON: true }));
+const setUserInfo = (key: string, isLogin: any) => {
+  localStorage.setItem(key, isLogin);
 };
 
-const getUserInfo = (key: string):any => {
-  const userInfo = localStorage.getItem(key);
+const getUserInfo = (key: string) => {
+  const isLogin = localStorage.getItem(key);
 
-  return JSON.parse(userInfo!);
+  return JSON.parse(isLogin!);
 };
 
 const delUserInfo = (key: string) => {

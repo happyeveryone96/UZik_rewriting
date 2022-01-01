@@ -1,9 +1,13 @@
 // LIBRARY
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 // ELEMENTS
 import { TextArea } from '../../elements/index';
 import { Button } from '../../elements/index';
+
+// COMPONENTS
+import Header from '../../components/Header';
 
 // STYLE
 import { css } from "styled-components";
@@ -11,23 +15,49 @@ import './index.scss';
 
 // REDUX
 import { history } from "../../redux/configureStore";
-import Header from '../../components/Header';
+
+// AXIOS
+import Axios from 'axios';
 
 function WritePage() {
+  const user = useSelector(state => state.user);
+  console.log(user);
   const [job, setJob] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
 
   const $job = (e) => {
-    setContents(e.target.value);
+    setJob(e.target.value);
   };
   const $title = (e) => {
-    setContents(e.target.value);
+    setTitle(e.target.value);
   };
   const $contents = (e) => {
     setContents(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const post = {
+      writer: user.user_info._id,
+      job: job,
+      title: title,
+      contents: contents,
+    }
+    Axios.post('http://localhost:8080/api/post/create', post)
+      .then((response) => {
+        if (response.data.success) {
+          console.log(post);
+          // alert('글 작성 완료!');
+          // setTimeout(() => {
+          //   history.push('/');
+          // },1000)
+        } else {
+          console.log(response);
+          alert('글 작성 실패!')
+        }
+      })
+  }
   return (
     <div className='write-page'>
       <Header/>
@@ -90,7 +120,8 @@ function WritePage() {
           width='48%'
           background='#718093'
           color='white' 
-          borderRadius="10px">
+          borderRadius="10px"
+          clickEvent={onSubmit}>
           작성하기
         </Button>
         <Button
