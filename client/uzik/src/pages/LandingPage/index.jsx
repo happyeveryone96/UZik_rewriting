@@ -13,10 +13,14 @@ import { Button } from '../../elements/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllJobsApi } from '../../redux/modules/job'
 import { history } from "../../redux/configureStore";
+import { getPostDB } from '../../redux/modules/post';
+
+// STYLE
+import './index.scss';
 
 function LandingPage() {
   const dispatch = useDispatch()
-
+  const posts = useSelector((state) => state.post.list);
   const allJobs = useSelector((state) => state.job.job_list);
   const regex = /[^0-9]/g;
   const newAllJobs = allJobs.filter(job => regex.test(job) === true);
@@ -37,6 +41,10 @@ function LandingPage() {
     dispatch(getAllJobsApi());
   },[dispatch]);
 
+  useEffect(() => {
+   dispatch(getPostDB());
+  },[]);
+
   return (
     <div>
       <Header/>
@@ -55,6 +63,23 @@ function LandingPage() {
         clickEvent={() => history.push('/write')}>
         글쓰기
       </Button>
+      <div className='App-content-header'>
+        <div className='App-content-header-job'>직업명</div>
+        <div className='App-content-header-title'>제목</div>
+        <div className='App-content-header-content'>내용</div>
+      </div>
+      {posts && posts.length > 0 ? (
+          posts.map((post, idx) => {
+            return (
+              <div style={{ width: "100%" }} key={idx}>
+                <JobPost post={post} />
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      {/* <JobPost/>
       <JobPost/>
       <JobPost/>
       <JobPost/>
@@ -65,8 +90,7 @@ function LandingPage() {
       <JobPost/>
       <JobPost/>
       <JobPost/>
-      <JobPost/>
-      <JobPost/>
+      <JobPost/> */}
     </div>
   )
 }

@@ -19,7 +19,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(auth())
-      if (option && token !== undefined && path !== '/write' && path !== '/detail/1') {
+      if (option && token !== undefined && path !== '/write' && path.split('/')[1] !== 'detail') {
         history.push('/');
       } else if (option && token === undefined) {
         history.push('/login');

@@ -7,17 +7,21 @@ import './index.scss';
 // REDUX
 import { history } from "../../redux/configureStore";
 
-const JobPost = () => {
+const JobPost = (post) => {
+  const job = post.post.job;
+  const title = post.post.title;
+  const contents = post.post.contents;
+  const id = post.post._id;
   return (
-      <div className="job-post" onClick={()=>history.push('/detail/1')}>
+      <div className="job-post" onClick={()=>history.push(`/detail/${id}`)}>
         <div className="job-post-name">
-          직업명
+          {job}
         </div>
         <div className="job-post-title">
-          제목
+          {title}
         </div>
         <div className="job-post-content">
-          내용 요약
+          {contents}
         </div>
       </div>
   )

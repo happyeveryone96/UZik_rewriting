@@ -10,4 +10,13 @@ router.post('/create', (req, res) => {
   })
 })
 
+router.get('/getPosts', (req, res) => {
+  Post.find()
+    .populate('writer')
+    .exec((err, posts) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json({ success: true, posts});
+    })
+})
+
 module.exports = router;

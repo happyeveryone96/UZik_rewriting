@@ -15,13 +15,11 @@ import './index.scss';
 
 // REDUX
 import { history } from "../../redux/configureStore";
-
-// AXIOS
-import Axios from 'axios';
+import { addPostDB } from '../../redux/modules/post';
 
 function WritePage() {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  // const token = document.cookie.split('x_auth=')[1];
   const [job, setJob] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
@@ -44,19 +42,7 @@ function WritePage() {
       title: title,
       contents: contents,
     }
-    Axios.post('http://localhost:8080/api/post/create', post)
-      .then((response) => {
-        if (response.data.success) {
-          console.log(post);
-          // alert('글 작성 완료!');
-          // setTimeout(() => {
-          //   history.push('/');
-          // },1000)
-        } else {
-          console.log(response);
-          alert('글 작성 실패!')
-        }
-      })
+    dispatch(addPostDB(post));
   }
   return (
     <div className='write-page'>
