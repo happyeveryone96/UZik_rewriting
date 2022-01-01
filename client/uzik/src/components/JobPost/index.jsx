@@ -15,10 +15,10 @@ const JobPost = (post) => {
   return (
       <div className="job-post" onClick={()=>history.push(`/detail/${id}`)}>
         <div className="job-post-name">
-          {job}
+          {job.length > 8 ? job.substring(0,8)+'...' : job}
         </div>
         <div className="job-post-title">
-          {title}
+          {title.length > 8 ? title.substring(0,8)+'...' : title}
         </div>
         <div className="job-post-content">
           {contents}
