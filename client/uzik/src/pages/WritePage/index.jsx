@@ -1,6 +1,6 @@
 // LIBRARY
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // ELEMENTS
 import { TextArea } from '../../elements/index';
@@ -21,7 +21,7 @@ import Axios from 'axios';
 
 function WritePage() {
   const user = useSelector(state => state.user);
-  console.log(user);
+  // const token = document.cookie.split('x_auth=')[1];
   const [job, setJob] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");

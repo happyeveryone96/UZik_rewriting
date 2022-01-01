@@ -1,10 +1,10 @@
 export type SignUpType = {
-  username: string;
+  email: string;
   password: string;
   name: string;
 };
 
 export type SignInType = {
-  username: string;
+  email: string;
   password: string;
 };

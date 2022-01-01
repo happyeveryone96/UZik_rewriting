@@ -19,8 +19,8 @@ const App = () =>{
         <Route exact path="/" component={Auth(LandingPage, true)}/>
         <Route exact path="/login" component={Auth(LoginPage, false)}/>
         <Route exact path="/register" component={Auth(RegisterPage, false)}/>
-        <Route exact path="/write" component={WritePage}/>
-        <Route exact path="/detail/:id" component={PostDetailPage}/>
+        <Route exact path="/write" component={Auth(WritePage, true)}/>
+        <Route exact path="/detail/:id" component={Auth(PostDetailPage, true)}/>
       </Switch>
     </div>
   );

@@ -21,11 +21,11 @@ function LoginPage() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    let body = {
+    let user = {
       email: Email,
       password: Password
     }
-    dispatch(loginUser(body))
+    dispatch(loginUser(user))
   }
 
   return (

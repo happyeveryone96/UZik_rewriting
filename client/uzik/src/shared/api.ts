@@ -52,8 +52,8 @@ instance.interceptors.response.use(
 );
 
 const apis = {
-  SignUp: (user: SignUpType) => instance.post('/api/user/register', user),
-  SignIn: (user: SignInType) => instance.post('/api/user/login', user),
+  SignUp: (user: SignUpType) => axios.post('/api/user/register', user),
+  SignIn: (user: SignInType) => axios.post('/api/user/login', user),
   LogOut: () => instance.get('/api/user/logout'),
   Auth: () => instance.get('/api/user/auth'),
 }

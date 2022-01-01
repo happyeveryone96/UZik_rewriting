@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { delToken } from '../../shared/token.ts';
+import { delToken } from '../../shared/token';
 import { SignUpType, SignInType } from '../../shared/ApiTypes';
+import apis from '../../shared/api';
+import { history } from '../configureStore.js';
 
 const initialState = {
   user_info: { email: '', id: ''},
@@ -27,28 +29,29 @@ const user = createSlice({
   },
 });
 
-export const loginUser = (body: SignInType) => 
-  async (dispatch:any, getState:any, { history }) => {
-  const request = axios.post('/api/user/login', body)
-    .then(response => {
-      if (response.data.loginSuccess === true) {
-        history.push('/')
-      } else {
-        alert('Error');
-      }})
-}
+export const loginUser = (user: SignInType) => {
+  return function (dispatch: any) {
+    apis
+      .SignIn(user)
+      .then(({ data }: any) => {
+        if (data.loginSuccess === true) {
+          history.push('/')
+        } else {
+          alert('로그인 실패!')
+        }
+      })
+  };
+};
 
-export const registerUser = (body: SignUpType) => 
-  async (dispatch:any, getState:any, { history }) => {
-  const request = axios.post('/api/user/register', body)
-    .then(response => {
-      if (response.data.success === true) {
-        history.push('/login')
-      } else {
-        alert('중복된 이메일입니다.')
-      }})
-  return { payload: request }
-}
+export const registerUser = (user: SignUpType) => async () => {
+  try {
+    await apis.SignUp(user);
+    window.alert('회원가입이 완료되었습니다!');
+    history.push('/');
+  } catch (err: any) {
+    window.alert('이미 존재하는 아이디입니다.');
+  }
+};
 
 export const auth = () => 
   async (dispatch:any, { history }) => {
