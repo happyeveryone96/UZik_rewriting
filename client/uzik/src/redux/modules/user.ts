@@ -6,7 +6,7 @@ import apis from '../../shared/api';
 import { history } from '../configureStore.js';
 
 const initialState = {
-  user_info: { email: '', id: ''},
+  user_info: { email: '', id: '', name: ''},
   is_login: false,
 };
 
@@ -24,6 +24,7 @@ const user = createSlice({
     SetUser: (state, action) => {
       state.user_info.email = action.payload.email;
       state.user_info.id = action.payload.id;
+      state.user_info.name = action.payload.name;
       state.is_login = true;
     },
   },

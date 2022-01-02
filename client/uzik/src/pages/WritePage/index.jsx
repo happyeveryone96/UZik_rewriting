@@ -23,7 +23,7 @@ function WritePage() {
   const [job, setJob] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
-  const name = user.user_info.email.split('@')[0];
+  const name = user.user_info.name;
 
   const $job = (e) => {
     setJob(e.target.value);

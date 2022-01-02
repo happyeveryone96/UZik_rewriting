@@ -29,8 +29,8 @@ const PostDetailPage = () => {
   const title = post.postDetail.title;
   const name = post.postDetail.name;
   const user = useSelector((state) => state.user);
-  const userCheck = user.user_info.email.split('@')[0] === name;
-  
+  const userCheck = user.user_info.name === name;
+
   const deletePost = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
       dispatch(deletePostDB(variable));
@@ -54,8 +54,7 @@ const PostDetailPage = () => {
           background='#718093'
           addstyle={() => {
             return css`
-              right: 0;
-              top: 0;
+              border-radius: 10px 0 0 0;
             `;
           }}
           onClick={deletePost}>
