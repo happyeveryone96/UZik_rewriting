@@ -26,8 +26,8 @@ instance.interceptors.request.use((config) => {
 const apis = {
   SignUp: (user: SignUpType) => axios.post('/api/user/register', user),
   SignIn: (user: SignInType) => axios.post('/api/user/login', user),
-  LogOut: () => instance.get('/api/user/logout'),
-  Auth: () => instance.get('/api/user/auth'),
+  LogOut: () => axios.get('/api/user/logout'),
+  Auth: () => axios.get('/api/user/auth'),
 }
 
 export default apis;

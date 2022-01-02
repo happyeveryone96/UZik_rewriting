@@ -55,7 +55,7 @@ export const registerUser = (user: SignUpType) => async () => {
 };
 
 export const auth = () => 
-  async (dispatch:any, { history }) => {
+  async (dispatch:any) => {
     const request = axios.get('/api/user/auth')
       .then(response => {
         const email = response.data.email;
@@ -65,6 +65,21 @@ export const auth = () =>
         dispatch(SetUser(userInfo));
       })
 }
+
+export const logoutUser = () => {
+  return function (dispatch: any) {
+    apis
+      .LogOut()
+      .then(({ data }: any) => {
+        if (!data.isAuth) {
+          delToken();
+          history.push('/login')
+        } else {
+          alert('로그아웃 하는데 실패했습니다.')
+        }
+      })
+  };
+};
 
 export const { SetUser, logOut, logCheck } = user.actions;
 export default user;

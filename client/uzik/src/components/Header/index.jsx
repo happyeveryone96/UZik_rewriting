@@ -1,17 +1,13 @@
 // LIBRARY
 import React from 'react';
-
-// AXIOS
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 
 // REDUX
 import { history } from '../../redux/configureStore';
+import { logoutUser } from '../../redux/modules/user';
 
 // ELEMENTS
 import Button from '../../elements/Button';
-
-// TOKEN
-import { delToken } from '../../shared/token.ts';
 
 // ROUTE
 import { useLocation } from "react-router-dom";
@@ -21,17 +17,10 @@ import { css } from "styled-components";
 import './index.scss'
 
 const Header = () => {
+  const dispatch = useDispatch();
   const path = useLocation().pathname;
   const onClickHandler = () => {
-    axios.get('/api/user/logout')
-    .then(response => {
-      if (!response.data.isAuth) {
-        delToken();
-        history.push('/login')
-      } else {
-        alert('로그아웃 하는데 실패했습니다.')
-      }
-    })
+    dispatch(logoutUser())
   }
 
   return (
