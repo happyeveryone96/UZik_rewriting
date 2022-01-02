@@ -10,14 +10,6 @@ const post = createSlice({
   name: 'post',
   initialState,
   reducers: {
-    addPost: (state, action) => {
-      const writer = action.payload.writer;
-      const job = action.payload.job;
-      const title = action.payload.title;
-      const contents = action.payload.contents;
-      state.list.push(writer, job, title, contents);
-      state.is_login = true;
-    },
     getPost: (state, action) => {
       state.list = action.payload;
     },
@@ -33,9 +25,7 @@ export const addPostDB = (post) => {
     .then((response) => {
       if (response.data.success) {
         alert('글 작성 완료!');
-        setTimeout(() => {
-          history.push('/');
-        },1000)
+        history.push('/');
       } else {
         alert('글 작성 실패!')
       }
@@ -84,5 +74,5 @@ export const deletePostDB = (variable) => {
   }
 };
 
-export const { addPost, getPost, getOnePost } = post.actions;
+export const { getPost, getOnePost } = post.actions;
 export default post;
