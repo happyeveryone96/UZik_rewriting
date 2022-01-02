@@ -19,7 +19,7 @@ import { getPostDB } from '../../redux/modules/post';
 import './index.scss';
 
 function LandingPage() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.list);
   const allJobs = useSelector((state) => state.job.job_list);
   const regex = /[^0-9]/g;

@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  list: []
+  list: [],
+  postDetail: [],
 };
 
 const post = createSlice({
@@ -19,6 +20,9 @@ const post = createSlice({
     },
     getPost: (state, action) => {
       state.list = action.payload;
+    },
+    getOnePost: (state, action) => {
+      state.postDetail = action.payload;
     },
   },
 });
@@ -39,7 +43,7 @@ export const addPostDB = (post) => {
   }
 };
 
-export const getPostDB = (post) => {
+export const getPostDB = () => {
   return function (dispatch, getState, { history }) {
     axios.get('/api/post/getPosts')
     .then((response) => {
@@ -53,5 +57,19 @@ export const getPostDB = (post) => {
   }
 };
 
-export const { addPost, getPost } = post.actions;
+export const getPostDetailDB = (variable) => {
+  return function (dispatch, getState, { history }) {
+    axios.post('/api/post/getPostDetail', variable)
+    .then((response) => {
+      if (response.data.success) {
+        const postDetail = response.data.postDetail;
+        dispatch(getOnePost(postDetail));
+      } else {
+        alert('게시물 가져오기 실패!')
+      }
+    })
+  }
+};
+
+export const { addPost, getPost, getOnePost } = post.actions;
 export default post;

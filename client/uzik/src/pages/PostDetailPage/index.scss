@@ -36,5 +36,8 @@
   }
   &-text {
     margin: 0 20px;
+    width: 90%;
+    word-break: break-all;
+    white-space: pre-line;
   }
 }

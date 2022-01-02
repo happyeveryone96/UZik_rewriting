@@ -23,6 +23,7 @@ function WritePage() {
   const [job, setJob] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
+  const name = user.user_info.email.split('@')[0];
 
   const $job = (e) => {
     setJob(e.target.value);
@@ -41,6 +42,7 @@ function WritePage() {
       job: job,
       title: title,
       contents: contents,
+      name: name,
     }
     dispatch(addPostDB(post));
   }

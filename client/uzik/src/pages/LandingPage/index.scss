@@ -20,7 +20,9 @@
   }
   &-content {
     display: flex;
-    justify-content: center;
+    position: relative;
+    left: 20px;
+    justify-content: left;
     align-items: center;
     width: 60vw;
   }

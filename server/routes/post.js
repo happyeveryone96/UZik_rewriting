@@ -19,4 +19,13 @@ router.get('/getPosts', (req, res) => {
     })
 })
 
+router.post('/getPostDetail', (req, res) => {
+  Post.findOne({ '_id' : req.body.postId })
+    .populate('writer')
+    .exec((err, postDetail) => {
+      if (err) return res.status(400).send(err)
+      return res.status(200).json({ success: true, postDetail })
+    })
+})
+
 module.exports = router;
