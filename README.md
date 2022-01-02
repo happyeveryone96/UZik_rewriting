@@ -29,4 +29,13 @@
 ## 기능 소개
 - 워크넷 오픈 API를 이용해 직업 목록 가져오기
 - 직업에 대한 검색 링크 기능(구글, 유튜브, 다음, 네이버, 워크넷)
-- 게시글 작성, 게시글 삭제, 게시글 상세 정보 가져오기, 전체 게시글 가져오기
+- 게시글 작성 <br>
+  <img src="https://user-images.githubusercontent.com/66675699/147876759-1fd28f3e-4905-4be8-8d6c-b531138a6a7a.png" width=300/>
+- 게시글 삭제, 게시글 상세 정보 가져오기 <br>
+  <img src="https://user-images.githubusercontent.com/66675699/147876666-67ad461e-0b17-4305-a0d7-d8ca47812a2f.png" width=300/>
+- 전체 게시글 가져오기 <br>
+  <img src="https://user-images.githubusercontent.com/66675699/147876994-72c02331-3d67-4931-8e33-13985a0d0fb1.png" width=300/>
+- 미디어 쿼리를 이용한 반응형 웹 구현 <br>
+  <img src="https://user-images.githubusercontent.com/66675699/147876840-c14d91e7-dc2d-4850-a235-85ed52a0ee80.png" width=300/>
+  <img src="https://user-images.githubusercontent.com/66675699/147876848-54540b0a-0d58-498f-8d84-384acd1a2bbf.png" width=300 height=300/>
+
