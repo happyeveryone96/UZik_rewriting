@@ -71,5 +71,18 @@ export const getPostDetailDB = (variable) => {
   }
 };
 
+export const deletePostDB = (variable) => {
+  return function (dispatch, getState, { history }) {
+    axios.post('/api/post/delete', variable)
+    .then((response) => {
+      if (response.data.success) {
+        history.push('/');
+      } else {
+        alert('게시물 가져오기 실패!')
+      }
+    })
+  }
+};
+
 export const { addPost, getPost, getOnePost } = post.actions;
 export default post;

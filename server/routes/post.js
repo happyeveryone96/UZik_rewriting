@@ -28,4 +28,13 @@ router.post('/getPostDetail', (req, res) => {
     })
 })
 
+router.post('/delete', (req, res) => {
+  Post.deleteOne({ '_id' : req.body.postId })
+    .populate('writer')
+    .exec((err) => {
+      if (err) return res.status(400).send(err)
+      return res.status(200).json({ success: true })
+    })
+})
+
 module.exports = router;
