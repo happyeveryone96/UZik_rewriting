@@ -47,9 +47,9 @@ export const getPostDB = () => {
   }
 };
 
-export const getPostDetailDB = (variable) => {
+export const getPostDetailDB = (postId) => {
   return function (dispatch, getState, { history }) {
-    axios.post('/api/post/getPostDetail', variable)
+    axios.post('/api/post/getPostDetail', { postId })
     .then((response) => {
       if (response.data.success) {
         const postDetail = response.data.postDetail;
@@ -61,9 +61,9 @@ export const getPostDetailDB = (variable) => {
   }
 };
 
-export const deletePostDB = (variable) => {
+export const deletePostDB = (postId) => {
   return function (dispatch, getState, { history }) {
-    axios.post('/api/post/delete', variable)
+    axios.post('/api/post/delete', { postId })
     .then((response) => {
       if (response.data.success) {
         history.push('/');

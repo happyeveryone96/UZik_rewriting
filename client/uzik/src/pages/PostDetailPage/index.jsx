@@ -22,7 +22,6 @@ const PostDetailPage = () => {
   const dispatch = useDispatch();
   const path = useLocation();
   const postId = path.pathname.split('/')[2]
-  const variable = { postId: postId } 
   const post = useSelector((state) => state.post);
   const contents = post.postDetail.contents;
   const job = post.postDetail.job;
@@ -33,13 +32,13 @@ const PostDetailPage = () => {
 
   const deletePost = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-      dispatch(deletePostDB(variable));
+      dispatch(deletePostDB(postId));
     }
   };
   
   useEffect(() => {
-    dispatch(getPostDetailDB(variable));
-  },[dispatch]);
+    dispatch(getPostDetailDB(postId));
+  },[postId, dispatch]);
 
   return (
     <div>
