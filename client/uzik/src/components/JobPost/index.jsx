@@ -21,7 +21,7 @@ const JobPost = (post) => {
           {title.length > 8 ? title.substring(0,8)+'...' : title}
         </div>
         <div className="job-post-content">
-          {contents}
+          {contents.length > 40 ? contents.substring(0,40)+'...' : contents}
         </div>
       </div>
   )
