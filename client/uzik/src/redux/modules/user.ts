@@ -31,7 +31,7 @@ const user = createSlice({
 });
 
 export const loginUser = (user: SignInType) => {
-  return function (dispatch: any) {
+  return function () {
     apis
       .SignIn(user)
       .then(({ data }: any) => {
@@ -67,7 +67,7 @@ export const auth = () =>
 }
 
 export const logoutUser = () => {
-  return function (dispatch: any) {
+  return function () {
     apis
       .LogOut()
       .then(({ data }: any) => {

@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import apis from '../../shared/api';
+import { AddPostType } from '../../shared/ApiTypes';
+import { history } from '../configureStore.js';
 
 const initialState = {
   list: [],
@@ -19,8 +22,8 @@ const post = createSlice({
   },
 });
 
-export const addPostDB = (post) => {
-  return function (dispatch, getState, { history }) {
+export const addPostDB = (post: AddPostType) => {
+  return function () {
     axios.post('/api/post/create', post)
     .then((response) => {
       if (response.data.success) {
@@ -34,8 +37,8 @@ export const addPostDB = (post) => {
 };
 
 export const getPostDB = () => {
-  return function (dispatch, getState, { history }) {
-    axios.get('/api/post/getPosts')
+  return function (dispatch:any) {
+    apis.GetPosts()
     .then((response) => {
       if (response.data.success) {
         const posts = response.data.posts
@@ -47,9 +50,9 @@ export const getPostDB = () => {
   }
 };
 
-export const getPostDetailDB = (postId) => {
-  return function (dispatch, getState, { history }) {
-    axios.post('/api/post/getPostDetail', { postId })
+export const getPostDetailDB = (postId: string) => {
+  return function (dispatch:any) {
+    apis.GetPostDetail(postId)
     .then((response) => {
       if (response.data.success) {
         const postDetail = response.data.postDetail;
@@ -61,9 +64,9 @@ export const getPostDetailDB = (postId) => {
   }
 };
 
-export const deletePostDB = (postId) => {
-  return function (dispatch, getState, { history }) {
-    axios.post('/api/post/delete', { postId })
+export const deletePostDB = (postId: string) => {
+  return function () {
+    apis.DeletePost(postId)
     .then((response) => {
       if (response.data.success) {
         history.push('/');

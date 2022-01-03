@@ -1,16 +1,14 @@
 
 // API TYPES
-import { SignInType, SignUpType } from './ApiTypes';
+import { SignInType, SignUpType, AddPostType } from './ApiTypes';
 
 // AXIOS
 import axios from 'axios';
 
-// TOKEN / JWT
+// TOKEN
 import { getToken } from './token';
 
 export const instance = axios.create({
-  // baseURL: 'http://13.125.2.115:8080/',
-  baseURL: 'http://localhost:8080/',
   withCredentials: true,
   timeout: 3000,
 });
@@ -24,10 +22,14 @@ instance.interceptors.request.use((config) => {
 });
 
 const apis = {
-  SignUp: (user: SignUpType) => axios.post('/api/user/register', user),
-  SignIn: (user: SignInType) => axios.post('/api/user/login', user),
-  LogOut: () => axios.get('/api/user/logout'),
-  Auth: () => axios.get('/api/user/auth'),
+  SignUp: (user: SignUpType) => instance.post('/api/user/register', user),
+  SignIn: (user: SignInType) => instance.post('/api/user/login', user),
+  LogOut: () => instance.get('/api/user/logout'),
+  Auth: () => instance.get('/api/user/auth'),
+  AddPost: (post: AddPostType) => axios.post('/api/post/create', post),
+  GetPosts: () => instance.get('/api/post/getPosts'),
+  GetPostDetail: (postId: string) => instance.post('/api/post/getPostDetail', { postId }),
+  DeletePost: (postId: string) => instance.post('/api/post/delete', { postId })
 }
 
 export default apis;
