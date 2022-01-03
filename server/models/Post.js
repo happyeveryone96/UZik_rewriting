@@ -6,6 +6,9 @@ const postSchema = mongoose.Schema({
       type: Schema.Types.ObjectId,
       ref:'User'
     },
+    postId: {
+      type: String,
+    },
     job: {
       type: String,
     },

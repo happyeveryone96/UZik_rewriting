@@ -17,16 +17,17 @@ import { css } from "styled-components";
 
 // REDUX
 import { getPostDetailDB, deletePostDB } from '../../redux/modules/post';
+import { history } from "../../redux/configureStore";
 
 const PostDetailPage = () => {
   const dispatch = useDispatch();
   const path = useLocation();
   const postId = path.pathname.split('/')[2]
   const post = useSelector((state) => state.post);
-  const contents = post.postDetail.contents;
-  const job = post.postDetail.job;
-  const title = post.postDetail.title;
-  const name = post.postDetail.name;
+  const contents = post.postDetail?.contents;
+  const job = post.postDetail?.job;
+  const title = post.postDetail?.title;
+  const name = post.postDetail?.name;
   const user = useSelector((state) => state.user);
   const userCheck = user.user_info.name === name;
 
@@ -46,6 +47,7 @@ const PostDetailPage = () => {
 
       <div className="post">
       {userCheck &&
+        <div className="post-button">
         <Button 
           width='30px'
           height='30px'
@@ -59,6 +61,16 @@ const PostDetailPage = () => {
           onClick={deletePost}>
             삭제
         </Button>
+        <Button
+          width='30px'
+          height='30px'
+          color='white'
+          margin='0 0 0 4px'
+          background='#718093'
+          onClick={()=>history.push(`/edit/${postId}`)}>
+          수정
+        </Button>
+        </div>
       }
         <div className="post-name">
           <p className="post-text">

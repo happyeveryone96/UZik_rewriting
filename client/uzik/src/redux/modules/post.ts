@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import apis from '../../shared/api';
-import { AddPostType } from '../../shared/ApiTypes';
+import { AddPostType, EditPostType } from '../../shared/ApiTypes';
 import { history } from '../configureStore.js';
 
 const initialState = {
@@ -76,6 +76,20 @@ export const deletePostDB = (postId: string) => {
     })
   }
 };
+
+export const editPostDB = (post: EditPostType) => {
+  return function () {
+    apis.editPost(post)
+    .then((response) => {
+      if (response.data.success) {
+        history.goBack();
+      } else {
+        alert('게시물 수정 실패!')
+      }
+    })
+  }
+};
+
 
 export const { getPost, getOnePost } = post.actions;
 export default post;

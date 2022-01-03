@@ -1,6 +1,6 @@
 
 // API TYPES
-import { SignInType, SignUpType, AddPostType } from './ApiTypes';
+import { SignInType, SignUpType, AddPostType, EditPostType } from './ApiTypes';
 
 // AXIOS
 import axios from 'axios';
@@ -29,7 +29,8 @@ const apis = {
   AddPost: (post: AddPostType) => axios.post('/api/post/create', post),
   GetPosts: () => instance.get('/api/post/getPosts'),
   GetPostDetail: (postId: string) => instance.post('/api/post/getPostDetail', { postId }),
-  DeletePost: (postId: string) => instance.post('/api/post/delete', { postId })
+  DeletePost: (postId: string) => instance.post('/api/post/delete', { postId }),
+  editPost: (post: EditPostType) => instance.put('/api/post/update', post),
 }
 
 export default apis;

@@ -16,3 +16,12 @@ export type AddPostType = {
   contents: string,
   name: string,
 }
+
+export type EditPostType = {
+  postId: string,
+  writer: string,
+  job: string,
+  title: string,
+  contents: string,
+  name: string,
+}

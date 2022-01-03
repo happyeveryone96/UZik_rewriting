@@ -37,4 +37,21 @@ router.post('/delete', (req, res) => {
     })
 })
 
+router.put('/update', (req, res) => {
+  Post.updateOne(
+    { '_id' : req.body.postId }, 
+    { $set: {
+      writer: req.body.writer,
+      job: req.body.job,
+      title: req.body.title,
+      contents: req.body.contents,
+      name: req.body.name,
+  }})
+  .populate('writer')
+  .exec((err) => {
+    if (err) return res.status(400).send(err)
+    return res.status(200).json({ success: true })
+  })
+})
+
 module.exports = router;

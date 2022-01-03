@@ -1,5 +1,5 @@
 // LIBRARY
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // ELEMENTS
@@ -13,16 +13,26 @@ import Header from '../../components/Header';
 import { css } from "styled-components";
 import './index.scss';
 
+// ROUTE
+import { useLocation } from 'react-router-dom';
+
 // REDUX
 import { history } from "../../redux/configureStore";
-import { addPostDB } from '../../redux/modules/post';
+import { addPostDB, getPostDetailDB, editPostDB } from '../../redux/modules/post';
 
-function WritePage() {
+function WriteEditPage() {
   const dispatch = useDispatch();
+  const path = useLocation();
+  const editCheck = path.pathname?.split('/')[1] === 'edit';
+  const postId = path.pathname?.split('/')[2];
   const user = useSelector(state => state.user);
-  const [job, setJob] = React.useState("");
-  const [title, setTitle] = React.useState("");
-  const [contents, setContents] = React.useState("");
+  const post = useSelector(state => state.post?.postDetail);
+  const preJob = post?.job;
+  const preTitle = post?.title;
+  const preContents = post?.contents;
+  const [job, setJob] = useState(editCheck ? preJob : '');
+  const [title, setTitle] = useState(editCheck ? preTitle : '');
+  const [contents, setContents] = useState(editCheck ? preContents : '');
   const name = user.user_info.name;
 
   const $job = (e) => {
@@ -34,18 +44,27 @@ function WritePage() {
   const $contents = (e) => {
     setContents(e.target.value);
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
     const post = {
-      writer: user.user_info._id,
+      postId: postId,
+      writer: user.user_info.id,
       job: job,
       title: title,
       contents: contents,
       name: name,
     }
-    dispatch(addPostDB(post));
+    if (editCheck) {
+      dispatch(editPostDB(post));
+    } else {
+      dispatch(addPostDB(post));
+    }
   }
+
+  useEffect(() => {
+    dispatch(getPostDetailDB(postId));
+  },[dispatch]);
+
   return (
     <div className='write-page'>
       <Header/>
@@ -55,6 +74,7 @@ function WritePage() {
       <TextArea
         is_auto='is_auto'
         onChange={$job}
+        value={job}
         placeholder="직업을 입력해주세요."
         padding=" 7px 10px"
         width="30vw"
@@ -72,6 +92,7 @@ function WritePage() {
       <TextArea
         is_auto='is_auto'
         onChange={$title}
+        value={title}
         placeholder="제목을 입력해주세요."
         padding=" 7px 10px"
         width="30vw"
@@ -88,6 +109,7 @@ function WritePage() {
       />
       <TextArea
         onChange={$contents}
+        value={contents}
         placeholder="내용을 입력해주세요."
         padding=" 7px 10px"
         width="30vw"
@@ -110,14 +132,14 @@ function WritePage() {
           color='white' 
           borderRadius="10px"
           clickEvent={onSubmit}>
-          작성하기
+            {editCheck ? '수정하기' : '작성하기'}
         </Button>
         <Button
           width='48%'
           background='#718093'
           color='white'
           borderRadius="10px"
-          clickEvent={() => history.push('/')}>
+          clickEvent={() => history.goBack()}>
           취소하기
         </Button>
       </div>
@@ -125,4 +147,4 @@ function WritePage() {
   )
 }
 
-export default WritePage
+export default WriteEditPage;
