@@ -43,7 +43,7 @@ function LandingPage() {
 
   useEffect(() => {
    dispatch(getPostDB());
-  },[]);
+  },[dispatch]);
 
   return (
     <div>
